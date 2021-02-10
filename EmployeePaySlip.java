@@ -27,7 +27,7 @@ public class EmployeePaySlip {
 		 doc.addPage( Page );
 		 
 		 contentStream = new PDPageContentStream(doc, Page);
-		  String[][] contentHeader = {{ "EARNINGS", "AMOUNT", "DEDUCTIONS", "AMOUNT" } };
+		
 
  
 			String[][] content = {{"EARNINGS","AMOUNT","DEDUCTIONS","AMOUNT"}, 
