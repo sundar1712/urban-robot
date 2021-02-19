@@ -3,21 +3,18 @@ package com.salary.Statement;
 public class Employee {
  String employeeName;
 String refNo;
- String pfNo;
  String designation;
- String branch;
- String payDays;
- String presentDays;
+ double payDays;
+ double presentDays;
  public Employee() {
 	 
  }
  
- public Employee( String employeeName,String refNo,String pfNo,String designation,String branch,String payDays,String presentDays) {
+ public Employee( String employeeName,String refNo,String pfNo,String designation,String branch,double payDays,double presentDays) {
 		this.employeeName=employeeName;
 		this.refNo=refNo;
-		this.pfNo=pfNo;
+		
 		this.designation=designation;
-		this.branch=branch;
 		this.payDays=payDays;
 		this.presentDays=presentDays;
  }
@@ -33,35 +30,26 @@ public String getRefNo() {
 public void setRefNo(String refNo) {
 	this.refNo = refNo;
 }
-public String getPfNo() {
-	return pfNo;
-}
-public void setPfNo( String pfNo) {
-	this.pfNo = pfNo;
-}
+
+
 public String getDesignation() {
 	return designation;
 }
 public void setDesignation(String designation) {
 	this.designation = designation;
 }
-public String getBranch() {
-	return branch;
-}
-public void setBranch(String branch) {
-	this.branch = branch;
-}
-public String getPayDays() {
+
+public double getPayDays() {
 	return payDays;
 }
-public void setPayDays(String payDays) {
-	this.payDays = payDays;
+public void setPayDays(double numericalCellValue) {
+	this.payDays = numericalCellValue;
 }
-public String getPresentDays() {
+public double getPresentDays() {
 	return presentDays;
 }
-public void setPresentDays(String presentDays) {
-	this.presentDays = presentDays;
+public void setPresentDays(double numericalCellValue) {
+	this.presentDays = numericalCellValue;
 }
 
  
@@ -69,8 +57,10 @@ public void setPresentDays(String presentDays) {
 
 
 public String toString() {
-    return "Employee [employeeName=" + employeeName + ", refNo=" + refNo + ", pfNo=" + pfNo + ", designation=" + designation + ",branch=" + branch + ""
-    		+ ", payDays=" + payDays + ", presentDays=" + presentDays + "]";
+    return "Employee [employeeName=" + employeeName + ", refNo=" + refNo + ",  designation=" + designation + ", payDays=" + payDays + ", presentDays=" + presentDays + "]";
 
 }
+
+
+
 }

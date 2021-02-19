@@ -1,5 +1,7 @@
 package com.salary.Statement;
 
+
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -14,9 +16,10 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Test {
-//	ArrayList<Company> list1 = new ArrayList<>();
+public class Test2 {
+	ArrayList<Company> list1 = new ArrayList<>();
 	ArrayList<Employee> list = new ArrayList<>();
+	ArrayList<Earnings> list2 = new ArrayList<>();
 	LinkedHashMap<String,String> storeExcelValue = new LinkedHashMap<String, String>();
 
 	String path;
@@ -42,7 +45,7 @@ public class Test {
 			
 			
 	        DataFormatter dataFormatter = new DataFormatter();
-	        Employee employee = null;
+	     Earnings earnings = null;
 			for (Row row: sheet) {
 //				skip the row
 				 if (row.getRowNum() == 0 || row.getRowNum() == 1 || 
@@ -62,10 +65,10 @@ public class Test {
                     int columnID =cell.getColumnIndex();
                     if(columnID == 0 && !cellValue.isEmpty()) {
                     	System.out.println(columnID);
-                    	if(employee != null ) {
-                    		list.add(employee);
+                    	if(earnings != null ) {
+                    		list2.add(earnings);
 						}
-                    	employee= new Employee();
+                    	earnings= new Earnings();
                     	
                     }
 //                    String a = String.valueOf(rowID) + String.valueOf(columnID);
@@ -73,31 +76,45 @@ public class Test {
                     switch (cell.getColumnIndex()) {
 //					
                    
-					case 0:
-//						System.out.println(cell.getStringCellValue());
-						if(!cellValue.isEmpty()) {
-							employee.setRefNo(cell.getStringCellValue());
+					case 3:
+					if(!cellValue.isEmpty()) {
+						if(earnings.getBasic() == 0) {
+							earnings.setBasic(cell.getNumericCellValue());
+						}else if(earnings.getOtherAllowance()==0){
+						
+							earnings.setOtherAllowance(cell.getNumericCellValue());
+						}else if(earnings.getSpclAllowance()==0){
+							earnings.setSpclAllowance(cell.getNumericCellValue());
 						}
-						break;
-					case 1:
+					}
+					break;
+					case 4:
 //						System.out.println(cell.getStringCellValue());
 						if(!cellValue.isEmpty()) {
-							if(employee.getEmployeeName() == null) {
-								employee.setEmployeeName(cell.getStringCellValue());
-							}else {
-								employee.setDesignation(cell.getStringCellValue());
+							if(earnings.getHra() == 0) {
+								earnings.setHra(cell.getNumericCellValue());
+							}else  {
+								earnings.setMedicalAllowance(cell.getNumericCellValue());
 							}
+								
+							
 						}
 						break;
-					case 2:
+					case 5:
 						if(!cellValue.isEmpty()) {
 ////							System.out.println("inside case 2 :" + cell.getNumericCellValue());
-							if(employee.getPayDays() == 0) {
-							employee.setPayDays(cell.getNumericCellValue());
-							}else if(employee.getPresentDays() == 0) {
-								employee.setPresentDays(cell.getNumericCellValue());
+							if(earnings.getConveyance() == 0) {
+							earnings.setConveyance(cell.getNumericCellValue());
 							}
 						}
+						break;
+					case 6:
+						if(!cellValue.isEmpty()) {
+////						System.out.println("inside case 2 :" + cell.getNumericCellValue());
+						if(earnings.getTotalEarnings() == 0) {
+						earnings.setTotalEarnings(cell.getNumericCellValue());
+						}
+					}
 						break;
 //					case 3:
 ////						System.out.println(cell.getNumericCellValue());
@@ -108,18 +125,20 @@ public class Test {
 					}
                     
 				}
-				System.out.println("company " + employee.toString());
+				System.out.println("earnings " + earnings.toString());
                     
 //	                storeExcelValue.put(a,cellValue);
 	            
 	        }
 			
-			for(Employee emp : list) {
-				System.out.println(emp.getRefNo());
-				System.out.println(emp.getEmployeeName());
-				System.out.println(emp.getDesignation());
-				System.out.println(emp.getPayDays());
-				System.out.println(emp.getPresentDays());
+			for(Earnings earn : list2) {
+				System.out.println(earn.getBasic());
+				System.out.println(earn.getOtherAllowance());
+				System.out.println(earn.getSpclAllowance());
+				System.out.println(earn.getHra());
+				System.out.println(earn.getMedicalAllowance());
+				System.out.println(earn.getConveyance());
+				System.out.println(earn.getTotalEarnings());
 			}
 				}
 
@@ -133,3 +152,4 @@ public class Test {
 
 
 }
+

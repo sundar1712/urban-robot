@@ -1,5 +1,7 @@
 package com.salary.Statement;
 
+
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -14,9 +16,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Test {
-//	ArrayList<Company> list1 = new ArrayList<>();
-	ArrayList<Employee> list = new ArrayList<>();
+public class Test3 {
+	
+	ArrayList<Deductions> list3 = new ArrayList<>();
 	LinkedHashMap<String,String> storeExcelValue = new LinkedHashMap<String, String>();
 
 	String path;
@@ -42,7 +44,7 @@ public class Test {
 			
 			
 	        DataFormatter dataFormatter = new DataFormatter();
-	        Employee employee = null;
+	     Deductions deduction = null;
 			for (Row row: sheet) {
 //				skip the row
 				 if (row.getRowNum() == 0 || row.getRowNum() == 1 || 
@@ -62,10 +64,10 @@ public class Test {
                     int columnID =cell.getColumnIndex();
                     if(columnID == 0 && !cellValue.isEmpty()) {
                     	System.out.println(columnID);
-                    	if(employee != null ) {
-                    		list.add(employee);
+                    	if(deduction != null ) {
+                    		list3.add(deduction);
 						}
-                    	employee= new Employee();
+                    	deduction= new Deductions();
                     	
                     }
 //                    String a = String.valueOf(rowID) + String.valueOf(columnID);
@@ -73,31 +75,45 @@ public class Test {
                     switch (cell.getColumnIndex()) {
 //					
                    
-					case 0:
-//						System.out.println(cell.getStringCellValue());
-						if(!cellValue.isEmpty()) {
-							employee.setRefNo(cell.getStringCellValue());
+					case 7:
+					if(!cellValue.isEmpty()) {
+						if(deduction.getPf() == 0) {
+							deduction.setPf(cell.getNumericCellValue());
+						}else {
+						
+							deduction.setTds(cell.getNumericCellValue());
 						}
-						break;
-					case 1:
+					}
+					break;
+					case 8:
 //						System.out.println(cell.getStringCellValue());
 						if(!cellValue.isEmpty()) {
-							if(employee.getEmployeeName() == null) {
-								employee.setEmployeeName(cell.getStringCellValue());
-							}else {
-								employee.setDesignation(cell.getStringCellValue());
+							if(deduction.getEsi() == 0) {
+								deduction.setEsi(cell.getNumericCellValue());
+							}else  {
+								deduction.setLoan(cell.getNumericCellValue());
 							}
+								
+							
 						}
 						break;
-					case 2:
+					case 9:
 						if(!cellValue.isEmpty()) {
 ////							System.out.println("inside case 2 :" + cell.getNumericCellValue());
-							if(employee.getPayDays() == 0) {
-							employee.setPayDays(cell.getNumericCellValue());
-							}else if(employee.getPresentDays() == 0) {
-								employee.setPresentDays(cell.getNumericCellValue());
+							if(deduction.getPt() == 0) {
+							deduction.setPt(cell.getNumericCellValue());
+							}else {
+								deduction.setSpclDeduction(cell.getNumericCellValue());
 							}
 						}
+						break;
+					case 10:
+						if(!cellValue.isEmpty()) {
+////						System.out.println("inside case 2 :" + cell.getNumericCellValue());
+						if(deduction.getTotalDeductions() == 0) {
+						deduction.setTotalDeductions(cell.getNumericCellValue());
+						}
+					}
 						break;
 //					case 3:
 ////						System.out.println(cell.getNumericCellValue());
@@ -108,18 +124,20 @@ public class Test {
 					}
                     
 				}
-				System.out.println("company " + employee.toString());
+				System.out.println("deduction " +deduction.toString());
                     
 //	                storeExcelValue.put(a,cellValue);
 	            
 	        }
 			
-			for(Employee emp : list) {
-				System.out.println(emp.getRefNo());
-				System.out.println(emp.getEmployeeName());
-				System.out.println(emp.getDesignation());
-				System.out.println(emp.getPayDays());
-				System.out.println(emp.getPresentDays());
+			for(Deductions deduct : list3) {
+				System.out.println(deduct.getPf());
+				System.out.println(deduct.getTds());
+				System.out.println(deduct.getEsi());
+				System.out.println(deduct.getLoan());
+				System.out.println(deduct.getPt());
+				System.out.println(deduct.getSpclDeduction());
+				System.out.println(deduct.getTotalDeductions());
 			}
 				}
 
@@ -133,3 +151,5 @@ public class Test {
 
 
 }
+
+

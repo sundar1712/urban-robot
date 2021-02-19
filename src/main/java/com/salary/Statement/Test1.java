@@ -3,7 +3,6 @@ package com.salary.Statement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,9 +13,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Test {
-//	ArrayList<Company> list1 = new ArrayList<>();
-	ArrayList<Employee> list = new ArrayList<>();
+public class Test1 {
+	ArrayList<Company> list1 = new ArrayList<>();
+	
 	LinkedHashMap<String,String> storeExcelValue = new LinkedHashMap<String, String>();
 
 	String path;
@@ -42,18 +41,14 @@ public class Test {
 			
 			
 	        DataFormatter dataFormatter = new DataFormatter();
-	        Employee employee = null;
+	       Company company =null;
 			for (Row row: sheet) {
-//				skip the row
-				 if (row.getRowNum() == 0 || row.getRowNum() == 1 || 
-			                row.getRowNum() == 2 || row.getRowNum() == 3 || 
-			                row.getRowNum() == 4 || row.getRowNum() == 5 || 
-			                row.getRowNum() == 6 || row.getRowNum() == 7 || 
-			                row.getRowNum() == 9 || row.getRowNum() == 10 || 
-			                row.getRowNum() == 11 || row.getRowNum() == 12 ||
-			                row.getRowNum() ==  8 || row.getRowNum()==121||row.getRowNum()==124) {
-			            continue;
-			        }
+				 if (row.getRowNum() == 0|| row.getRowNum() == 1)  
+				 {
+					 continue;
+				 }
+				 
+			                
 				 
 	            for(Cell cell: row) {
 	                String cellValue = dataFormatter.formatCellValue(cell);
@@ -61,65 +56,64 @@ public class Test {
                     int rowID = cell.getRowIndex();
                     int columnID =cell.getColumnIndex();
                     if(columnID == 0 && !cellValue.isEmpty()) {
-                    	System.out.println(columnID);
-                    	if(employee != null ) {
-                    		list.add(employee);
+//                    	System.out.println(columnID);
+                    	if(company != null ) {
+                    		list1.add(company);
 						}
-                    	employee= new Employee();
+                    	company= new Company();
                     	
                     }
 //                    String a = String.valueOf(rowID) + String.valueOf(columnID);
-//                    System.out.println(a); 
+//                    System.out.println(a+"\t"+cellValue); 
                     switch (cell.getColumnIndex()) {
 //					
                    
 					case 0:
+						System.out.println(cell.getStringCellValue());
+						if(!cellValue.isEmpty()) {
+							company.setCompanyName(cell.getStringCellValue());
+//					System.out.println("get " +company.getCompanyName());
+						}
+						break;
+//					case 1:
 //						System.out.println(cell.getStringCellValue());
-						if(!cellValue.isEmpty()) {
-							employee.setRefNo(cell.getStringCellValue());
-						}
-						break;
-					case 1:
-//						System.out.println(cell.getStringCellValue());
-						if(!cellValue.isEmpty()) {
-							if(employee.getEmployeeName() == null) {
-								employee.setEmployeeName(cell.getStringCellValue());
-							}else {
-								employee.setDesignation(cell.getStringCellValue());
-							}
-						}
-						break;
-					case 2:
-						if(!cellValue.isEmpty()) {
-////							System.out.println("inside case 2 :" + cell.getNumericCellValue());
-							if(employee.getPayDays() == 0) {
-							employee.setPayDays(cell.getNumericCellValue());
-							}else if(employee.getPresentDays() == 0) {
-								employee.setPresentDays(cell.getNumericCellValue());
-							}
-						}
-						break;
-//					case 3:
-////						System.out.println(cell.getNumericCellValue());
+//						if(!cellValue.isEmpty()) {
+//							if(employee.getEmployeeName() == null) {
+//								employee.setEmployeeName(cell.getStringCellValue());
+//							}else {
+//								employee.setDesignation(cell.getStringCellValue());
+//							}
+//						}
 //						break;
-//	
+//					case 2:
+//						if(!cellValue.isEmpty()) {
+//////							System.out.println("inside case 2 :" + cell.getNumericCellValue());
+//							if(employee.getPayDays() == 0) {
+//							employee.setPayDays(cell.getNumericCellValue());
+//							}else if(employee.getPresentDays() == 0) {
+//								employee.setPresentDays(cell.getNumericCellValue());
+//							}
+//						}
+//						break;
+					case 1:
+						System.out.println(cell.getNumericCellValue());
+		 				break;
+	
 					default:
 						break;
 					}
-                    
+                   
 				}
-				System.out.println("company " + employee.toString());
+	            
+				System.out.println("company " + company.toString());
                     
 //	                storeExcelValue.put(a,cellValue);
 	            
 	        }
 			
-			for(Employee emp : list) {
-				System.out.println(emp.getRefNo());
-				System.out.println(emp.getEmployeeName());
-				System.out.println(emp.getDesignation());
-				System.out.println(emp.getPayDays());
-				System.out.println(emp.getPresentDays());
+			for(Company com : list1) {
+				System.out.println(com.getCompanyName());
+				
 			}
 				}
 
@@ -133,3 +127,5 @@ public class Test {
 
 
 }
+
+
