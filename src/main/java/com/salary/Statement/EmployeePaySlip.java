@@ -63,7 +63,9 @@ public class EmployeePaySlip {
 			                row.getRowNum() == 6 || row.getRowNum() == 7 || 
 			                row.getRowNum() == 9 || row.getRowNum() == 10 || 
 			                row.getRowNum() == 11 || row.getRowNum() == 12 ||
-			                row.getRowNum() ==  8 || row.getRowNum()==121||row.getRowNum()==124) {
+			                row.getRowNum() ==  8 || row.getRowNum()==121||row.getRowNum()==124|| row.getRowNum()==125||row.getRowNum()==126 || 
+			                row.getRowNum()==127||row.getRowNum()==128|| row.getRowNum()==129||row.getRowNum()==130|| row.getRowNum()==131||row.getRowNum()==152||
+			                row.getRowNum()==154||row.getRowNum()==163||row.getRowNum()==165||row.getRowNum()==166||row.getRowNum()==167||row.getRowNum()==168||row.getRowNum()==169) {
 			            continue;
 			        }
 				 
@@ -220,7 +222,7 @@ public class EmployeePaySlip {
 
 	            }
 
-				
+	            System.out.println("company " + employee.toString());
                    
 //	                storeExcelValue.put(a,cellValue);
 	            
@@ -228,7 +230,7 @@ public class EmployeePaySlip {
 
 				
 
-			 System.out.println("company " + employee.toString());
+//			 System.out.println("company " + employee.toString());
 				}
 		
 
