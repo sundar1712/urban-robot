@@ -16,16 +16,13 @@ public class SalaryStatement {
 	    public static void main(String args[]) throws IOException, InterruptedException {
 	    	SalaryStatement pay =new SalaryStatement();
 	    	Read read=new Read();
-	    	Test test=new Test();
-//    read.ReadExcelDemo("SALARY STATEMENT - DECEMBER - 2020.xlsx");
-    test.ReadExcelDemo("SALARY STATEMENT - DECEMBER - 2020.xlsx");
-//	    ExcelReading excel=new ExcelReading();
-//	    excel.ReadExcel();
-	  
-//    	read.extractExcelContentByColumnIndex(0);
-//	    read.extractExcelContentByColumnIndex(1);
-//	    read.extractExcelContentByColumnIndex(2);
-//	    read.extractExcelContentByColumnIndex(3);
+	    	EmployeePaySlip test=new EmployeePaySlip();
+//	    	Test1 test1=new Test1();
+//	    	Test2 test2=new Test2();
+//	    	Test3 test3=new Test3();
+//    read.ReadExcel("SALARY STATEMENT - DECEMBER - 2020.xlsx");
+    test.ReadExcelFile("SALARY STATEMENT - DECEMBER - 2020.xlsx");
+//   
 	    	doc.addPage(Page);
 			contentStream =new PDPageContentStream(doc, Page);
 

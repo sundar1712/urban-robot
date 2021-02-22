@@ -2,21 +2,44 @@ package com.salary.Statement;
 
 public class Employee {
  String employeeName;
-String refNo;
+ String refNo;
  String designation;
  double payDays;
  double presentDays;
- public Employee() {
-	 
- }
+private Earnings earnings;
+ private Deductions deductions;
+
+
+
+
+public Deductions getDeductions() {
+	return deductions;
+}
+
+public void setDeductions(Deductions deductions) {
+	this.deductions = deductions;
+}
+
+public Earnings getEarnings() {
+	return earnings;
+}
+
+public void setEarnings(Earnings earnings) {
+	this.earnings = earnings;
+}
+public Employee(){
+	
+}
  
- public Employee( String employeeName,String refNo,String pfNo,String designation,String branch,double payDays,double presentDays) {
+ public Employee( String employeeName,String refNo,String designation,double payDays,double presentDays,Earnings earnings,Deductions deductions) {
 		this.employeeName=employeeName;
 		this.refNo=refNo;
 		
 		this.designation=designation;
 		this.payDays=payDays;
 		this.presentDays=presentDays;
+        this.earnings=earnings;
+        this.deductions=deductions;
  }
 public String getEmployeeName() {
 	return employeeName;
@@ -42,8 +65,8 @@ public void setDesignation(String designation) {
 public double getPayDays() {
 	return payDays;
 }
-public void setPayDays(double numericalCellValue) {
-	this.payDays = numericalCellValue;
+public void setPayDays(double d) {
+	this.payDays = d;
 }
 public double getPresentDays() {
 	return presentDays;
@@ -57,7 +80,7 @@ public void setPresentDays(double numericalCellValue) {
 
 
 public String toString() {
-    return "Employee [employeeName=" + employeeName + ", refNo=" + refNo + ",  designation=" + designation + ", payDays=" + payDays + ", presentDays=" + presentDays + "]";
+    return "Employee [employeeName=" + employeeName + ", refNo=" + refNo + ",  designation=" + designation + ", payDays=" + payDays + ", presentDays=" + presentDays + ",earnings="+earnings+",deductions="+deductions+"]";
 
 }
 

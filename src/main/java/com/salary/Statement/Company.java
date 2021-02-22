@@ -1,5 +1,7 @@
 package com.salary.Statement;
 
+import java.util.ArrayList;
+
 public class Company {
 	private String companyName;
 //	private String address;
@@ -7,11 +9,11 @@ public class Company {
 	public Company() {
 		
 	}
-	public   Company( String companyName) {
-		this.companyName=companyName;
-//		this.address=address;
-		
-	}
+//	public Company(Employee employee) {
+////		this.companyName=companyName;
+////		this.address=address;
+//		this.employee = employee;
+//	}
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -29,5 +31,6 @@ public class Company {
 	 public String toString() {
 		    return "Company [companyName=" + companyName + "]";
 		  }
+
 	}
 
