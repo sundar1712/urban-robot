@@ -5,7 +5,14 @@ import java.util.ArrayList;
 public class Company {
 	private String companyName;
 //	private String address;
+	ArrayList<Employee> empDetails = new ArrayList<>();
 	
+	public ArrayList<Employee> getEmpDetails() {
+		return empDetails;
+	}
+	public void setEmpDetails(ArrayList<Employee> empDetails) {
+		this.empDetails = empDetails;
+	}
 	public Company() {
 		
 	}

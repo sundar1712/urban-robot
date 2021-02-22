@@ -19,7 +19,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTCellStyleXfs;
 
 public class EmployeePaySlip {
-//	ArrayList<Company>list1 = new ArrayList<>();
+	ArrayList<Company>list1 = new ArrayList<>();
 	ArrayList<Employee> list = new ArrayList<>();
 //	
 	
@@ -74,14 +74,18 @@ public class EmployeePaySlip {
 //                 System.out.print(cell.getRowIndex()+"\t"+cellValue+"\n");
                     int rowID = cell.getRowIndex();
                     int columnID =cell.getColumnIndex();
+                   SalaryStatement statement=null;
                     if(columnID == 0 && !cellValue.isEmpty()) {
-                    	System.out.println(columnID+"test");
-//                    	if(company != null ) {
-//                    	 list1.add(company);
-//						}
+//                    	System.out.println(columnID);
+                    	company= new Company();
+
                     	 if(employee !=null) {
-							list.add(employee);
+							company.empDetails.add(employee);
+							showList(company);
+							statement=new SalaryStatement();
+//							statement.
 						}
+                    
 //                    	
                     	employee=new Employee();
                     	earnings=new Earnings();
@@ -222,27 +226,37 @@ public class EmployeePaySlip {
 
 	            }
 
-	            System.out.println("company " + employee.toString());
-                   
+//	            System.out.println("company " + employee.toString());
+//	            list.add(employee);
 //	                storeExcelValue.put(a,cellValue);
 	            
 	        }
-
-				
-
+		
+//			Employee e1=new Employee();
+			
+//				list.add(employee); 
+//System.out.println(list);
 //			 System.out.println("company " + employee.toString());
+			 
 				}
 		
 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		for(String i :storeExcelValue.keySet()) {
-		      System.out.println("key: " + i + " value: " + storeExcelValue.get(i));
-		}
+//		for(Employee i :list) {
+//		      System.out.println( i );
+//		     
+//		}
 
 		
 	}
-
+	
+public void showList(Company company) {
+	for(Employee i :company.getEmpDetails()) {
+	      System.out.println( i );
+	     
+	}
+}
 
 }
