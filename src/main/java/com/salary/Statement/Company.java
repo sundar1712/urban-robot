@@ -4,7 +4,15 @@ import java.util.ArrayList;
 
 public class Company {
 	private String companyName;
-//	private String address;
+	private String report;
+public String getReport() {
+		return report;
+	}
+	public void setReport(String report) {
+		this.report = report;
+	}
+
+	//	private String address;
 	ArrayList<Employee> empDetails = new ArrayList<>();
 	
 	public ArrayList<Employee> getEmpDetails() {
@@ -36,7 +44,7 @@ public class Company {
 //
 
 	 public String toString() {
-		    return "Company [companyName=" + companyName + "]";
+		    return "Company [companyName=" + companyName + ",report="+report+"]";
 		  }
 
 	}

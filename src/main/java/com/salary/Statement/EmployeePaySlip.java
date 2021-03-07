@@ -2,32 +2,25 @@ package com.salary.Statement;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTCellStyleXfs;
 
 public class EmployeePaySlip {
-	ArrayList<Company>list1 = new ArrayList<>();
-	ArrayList<Employee> list = new ArrayList<>();
+//	ArrayList<Company>list1 = new ArrayList<>();
+//	ArrayList<Employee> list = new ArrayList<>();
 //	
 	
 	LinkedHashMap<String,String> storeExcelValue = new LinkedHashMap<String, String>();
 
 	String path;
-
-	public void ReadExcelFile(String path) {
+//creating a method to read excel file
+	public void readExcelFile(String path) {
 		this.path = path;
 	
 
@@ -41,8 +34,7 @@ public class EmployeePaySlip {
 			XSSFSheet sheet = workbook.getSheetAt(0);
 			
 			
-//			Company company = new Company();
-//			List<String> obj = new ArrayList<String>();
+
 
 			System.out.println("");
 
@@ -74,15 +66,16 @@ public class EmployeePaySlip {
 //                 System.out.print(cell.getRowIndex()+"\t"+cellValue+"\n");
                     int rowID = cell.getRowIndex();
                     int columnID =cell.getColumnIndex();
-                   SalaryStatement statement=null;
+//                   SalaryStatement statement=null;
                     if(columnID == 0 && !cellValue.isEmpty()) {
 //                    	System.out.println(columnID);
                     	company= new Company();
+                    	
 
                     	 if(employee !=null) {
 							company.empDetails.add(employee);
 							showList(company);
-							statement=new SalaryStatement();
+//							statement=new SalaryStatement();
 //							statement.
 						}
                     
@@ -116,7 +109,6 @@ public class EmployeePaySlip {
 						}
 						break;
 					case 1:
-//						System.out.println(cell.getStringCellValue());
 						if(!cellValue.isEmpty()) {
 							if(employee.getEmployeeName() == null) {
 								employee.setEmployeeName(cell.getStringCellValue());
@@ -127,7 +119,6 @@ public class EmployeePaySlip {
 						break;
 					case 2:
 						if(!cellValue.isEmpty()) {
-////							System.out.println("inside case 2 :" + cell.getNumericCellValue());
 							if(employee.getPayDays() == 0) {
 							employee.setPayDays(cell.getNumericCellValue());
 							}else if(employee.getPresentDays() == 0) {
@@ -148,7 +139,6 @@ public class EmployeePaySlip {
 						}
 						break;
 						case 4:
-//							System.out.println(cell.getStringCellValue());
 							if(!cellValue.isEmpty()) {
 								if(earnings.getHra() == 0) {
 									earnings.setHra(cell.getNumericCellValue());
@@ -161,7 +151,6 @@ public class EmployeePaySlip {
 							break;
 						case 5:
 							if(!cellValue.isEmpty()) {
-////								System.out.println("inside case 2 :" + cell.getNumericCellValue());
 								if(earnings.getConveyance() == 0) {
 								earnings.setConveyance(cell.getNumericCellValue());
 								}
@@ -169,7 +158,6 @@ public class EmployeePaySlip {
 							break;
 						case 6:
 							if(!cellValue.isEmpty()) {
-////							System.out.println("inside case 2 :" + cell.getNumericCellValue());
 							if(earnings.getTotalEarnings() == 0) {
 							earnings.setTotalEarnings(cell.getNumericCellValue());
 							}
@@ -186,7 +174,6 @@ public class EmployeePaySlip {
 							}
 							break;
 							case 8:
-//								System.out.println(cell.getStringCellValue());
 								if(!cellValue.isEmpty()) {
 									if(deductions.getEsi() == 0) {
 										deductions.setEsi(cell.getNumericCellValue());
@@ -199,7 +186,6 @@ public class EmployeePaySlip {
 								break;
 							case 9:
 								if(!cellValue.isEmpty()) {
-////									System.out.println("inside case 2 :" + cell.getNumericCellValue());
 									if(deductions.getPt() == 0) {
 									deductions.setPt(cell.getNumericCellValue());
 									}else {
@@ -209,7 +195,6 @@ public class EmployeePaySlip {
 								break;
 							case 10:
 								if(!cellValue.isEmpty()) {
-////								System.out.println("inside case 2 :" + cell.getNumericCellValue());
 								if(deductions.getTotalDeductions() == 0) {
 								deductions.setTotalDeductions(cell.getNumericCellValue());
 								}
@@ -226,17 +211,10 @@ public class EmployeePaySlip {
 
 	            }
 
-//	            System.out.println("company " + employee.toString());
-//	            list.add(employee);
-//	                storeExcelValue.put(a,cellValue);
 	            
 	        }
 		
-//			Employee e1=new Employee();
-			
-//				list.add(employee); 
-//System.out.println(list);
-//			 System.out.println("company " + employee.toString());
+//		 System.out.println("company " + employee.toString());
 			 
 				}
 		
@@ -244,14 +222,12 @@ public class EmployeePaySlip {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-//		for(Employee i :list) {
-//		      System.out.println( i );
-//		     
+//	     
 //		}
 
 		
 	}
-	
+//	created a method to show the values in the list
 public void showList(Company company) {
 	for(Employee i :company.getEmpDetails()) {
 	      System.out.println( i );

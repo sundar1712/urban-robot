@@ -6,6 +6,19 @@ public class Employee {
  String designation;
  double payDays;
  double presentDays;
+ double netAmount;
+public double getNetAmount() {
+	return netAmount;
+}
+
+public void setNetAmount(double netAmount) {
+	this.netAmount = netAmount;
+}
+
+
+
+
+
 private Earnings earnings;
  private Deductions deductions;
 
@@ -31,15 +44,15 @@ public Employee(){
 	
 }
  
- public Employee( String employeeName,String refNo,String designation,double payDays,double presentDays,Earnings earnings,Deductions deductions) {
+ public Employee( String employeeName,String refNo,String designation,double payDays,double presentDays,Earnings earnings,Deductions deductions,double netAmount) {
 		this.employeeName=employeeName;
 		this.refNo=refNo;
-		
 		this.designation=designation;
 		this.payDays=payDays;
 		this.presentDays=presentDays;
         this.earnings=earnings;
         this.deductions=deductions;
+        this.netAmount=netAmount;
  }
 public String getEmployeeName() {
 	return employeeName;
@@ -71,8 +84,8 @@ public void setPayDays(double d) {
 public double getPresentDays() {
 	return presentDays;
 }
-public void setPresentDays(double numericalCellValue) {
-	this.presentDays = numericalCellValue;
+public void setPresentDays(double d) {
+	this.presentDays = d;
 }
 
  
@@ -80,7 +93,7 @@ public void setPresentDays(double numericalCellValue) {
 
 
 public String toString() {
-    return "Employee [employeeName=" + employeeName + ", refNo=" + refNo + ",  designation=" + designation + ", payDays=" + payDays + ", presentDays=" + presentDays + ",earnings="+earnings+",deductions="+deductions+"]";
+    return "Employee [employeeName=" + employeeName + ", refNo=" + refNo + ",  designation=" + designation + ", payDays=" + payDays + ", presentDays=" + presentDays + ",earnings="+earnings+",deductions="+deductions+",netAmount="+netAmount+"]";
 
 }
 

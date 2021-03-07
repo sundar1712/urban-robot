@@ -4,16 +4,38 @@ public class Earnings {
 	
 	double basic;
 	double hra;
+	double conveyance;
 	double otherAllowance;
 	double medicalAllowance;
-	double conveyance;
+	double otherConveyance;
 	double spclAllowance;
+	double special;
+	double spclConveyance;
+	public double getOtherConveyance() {
+		return otherConveyance;
+	}
+	public void setOtherConveyance(double otherConveyance) {
+		this.otherConveyance = otherConveyance;
+	}
+	public double getSpecial() {
+		return special;
+	}
+	public void setSpecial(double special) {
+		this.special = special;
+	}
+	public double getSpclConveyance() {
+		return spclConveyance;
+	}
+	public void setSpclConveyance(double spclConveyance) {
+		this.spclConveyance = spclConveyance;
+	}
 	double totalEarnings;
 	
 	public Earnings() {
 		
 	}
-	public Earnings(double totalEarnings,double basic,double hra,double otherAllowance,double medicalAllowance,double conveyance,double spclAllowance) 
+	public Earnings(double totalEarnings,double basic,double hra,double otherAllowance,double medicalAllowance,double conveyance
+			,double spclAllowance,double otherConveyance,double spclConveyance,double special) 
 	{
 		
 		this.basic=basic;
@@ -23,7 +45,9 @@ public class Earnings {
 		this.conveyance=conveyance;
 		this.spclAllowance=spclAllowance;
 		this.totalEarnings=totalEarnings;
-		
+		this.otherConveyance=otherConveyance;
+		this.spclConveyance=spclConveyance;
+		this.special=special;
 		
 	}
 
@@ -73,7 +97,7 @@ public class Earnings {
 	}
 	public String toString() {
 	    return "Earnings[ basic=" +basic + ",otherAllowance=" +otherAllowance + ",spclAllowance=" +spclAllowance+", hra=" +hra + ",medicalAllowance=" +medicalAllowance + ""
-	    		+ ", conveyance=" +conveyance + ",totalEarnings="+totalEarnings+"]";
+	    		+ ",special=" +special+", conveyance=" +conveyance + ", otherConveyance=" +otherConveyance + ", spclConveyance=" +spclConveyance + ",totalEarnings="+totalEarnings+"]";
 	}
 
 }
